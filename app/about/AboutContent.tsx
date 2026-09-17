@@ -45,7 +45,7 @@ export default function AboutContent() {
               data-reveal
               style={{ transitionDelay: `${i * 0.07}s` }}
             >
-              <span className="capability-icon">{cap.icon}</span>
+              <span className="service-num">{String(i + 1).padStart(2, '0')}</span>
               <span>{cap.title}</span>
             </div>
           ))}
@@ -58,17 +58,18 @@ export default function AboutContent() {
         <h2>{t.timelineTitle}</h2>
         <p className="section-sub">{t.timelineSub}</p>
       </div>
-      <div className="timeline">
+      <div className="role-list">
         {t.timeline.map((item, i) => (
-          <div className="timeline-item" key={item.title} data-reveal style={{ transitionDelay: `${i * 0.1}s` }}>
-            <span className="timeline-marker">{item.icon}</span>
-            <div className="timeline-card">
-              <div className="timeline-top">
-                <h3>{item.title}</h3>
-                <span className="tag">{item.period}</span>
+          <div className="role-card spotlight" key={item.title} data-reveal style={{ transitionDelay: `${i * 0.1}s` }}>
+            <span className="role-num">{String(t.timeline.length - i).padStart(2, '0')}</span>
+            <div>
+              <div className="role-meta">
+                {i === 0 && <span className="role-current-dot" />}
+                <span className="role-tag">{i === 0 ? t.currentRoleLabel : item.period}</span>
               </div>
-              <p className="timeline-loc">{item.loc}</p>
-              <p>{item.text}</p>
+              <h3>{item.title}</h3>
+              <p className="role-loc">{item.loc} · {item.period}</p>
+              <p className="role-text">{item.text}</p>
             </div>
           </div>
         ))}
@@ -109,6 +110,21 @@ export default function AboutContent() {
             <p className="cert-item-meta">
               {cert.issuer} · {cert.date}
             </p>
+          </div>
+        ))}
+      </div>
+
+      {/* LEARNING NOW */}
+      <div className="section-heading" style={{ marginTop: '3.5rem' }}>
+        <p className="eyebrow">{t.learningEyebrow}</p>
+        <h2>{t.learningTitle}</h2>
+      </div>
+      <div className="learning-grid">
+        {t.learning.map((item, i) => (
+          <div className="learning-card spotlight" key={item.title} data-reveal style={{ transitionDelay: `${i * 0.08}s` }}>
+            <span className="learning-tag">{t.learningEyebrow}</span>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
           </div>
         ))}
       </div>

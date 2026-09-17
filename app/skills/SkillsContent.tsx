@@ -27,7 +27,6 @@ export default function SkillsContent() {
         {CATEGORIES.map((category) => (
           <div className="skill-category" key={category.title.fr}>
             <div className="skill-category-header">
-              <span className="skill-category-icon">{category.icon}</span>
               <h3>{category.title[locale]}</h3>
             </div>
             <div className="skill-items">

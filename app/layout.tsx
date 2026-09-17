@@ -4,6 +4,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import PageEffects from '@/components/PageEffects';
 import FloatingButtons from '@/components/FloatingButtons';
+import CommandPalette from '@/components/CommandPalette';
 import { LanguageProvider } from '@/lib/i18n/LanguageContext';
 import { ThemeProvider } from '@/lib/theme/ThemeContext';
 import './globals.css';
@@ -35,12 +36,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={`${poppins.variable} ${jetbrainsMono.variable}`}>
         <ThemeProvider>
           <LanguageProvider>
-            <div className="bg-grid" aria-hidden="true"></div>
             <PageEffects />
             <Header />
             <main>{children}</main>
             <Footer />
             <FloatingButtons />
+            <CommandPalette />
           </LanguageProvider>
         </ThemeProvider>
       </body>

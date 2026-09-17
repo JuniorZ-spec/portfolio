@@ -15,8 +15,14 @@ export default function CaseStudiesContent() {
         <p className="section-sub">{t.sub}</p>
       </div>
       <div className="cards-grid">
-        {t.studies.map((study) => (
-          <article className="case-card" key={study.title}>
+        {t.studies.map((study, i) => (
+          <article
+            className="case-card spotlight"
+            key={study.title}
+            data-reveal
+            style={{ transitionDelay: `${i * 0.1}s` }}
+          >
+            <span className="service-num">{String(i + 1).padStart(2, '0')}</span>
             <h3>{study.title}</h3>
             <p>
               <strong>{t.problem}</strong> {study.problem}
@@ -27,7 +33,7 @@ export default function CaseStudiesContent() {
             <p>
               <strong>{t.result}</strong> {study.result}
             </p>
-            <a href="https://github.com/JuniorZ-spec" target="_blank" rel="noopener">
+            <a href="https://github.com/JuniorZ-spec" target="_blank" rel="noopener" className="article-link">
               {t.viewRepo}
             </a>
           </article>

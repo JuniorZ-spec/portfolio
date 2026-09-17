@@ -12,8 +12,8 @@ const NAV_LINKS = [
   { href: '/#about', label: 'About' },
   { href: '/#work', label: 'Work' },
   { href: '/skills', label: 'Skills' },
+  { href: '/articles', label: 'Articles' },
   { href: '/case-studies', label: 'Case Studies' },
-  { href: '/#contact', label: 'Contact' },
 ];
 
 export default function Header() {
@@ -46,6 +46,9 @@ export default function Header() {
               {link.label}
             </Link>
           ))}
+          <Link href="/#contact" className="nav-cta" onClick={() => setOpen(false)}>
+            Contact
+          </Link>
           <div className="lang-switch">
             <button
               type="button"
@@ -69,6 +72,14 @@ export default function Header() {
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
           >
             {theme === 'dark' ? '🌙' : '☀️'}
+          </button>
+          <button
+            type="button"
+            className="cmdk-trigger"
+            aria-label="Open command palette"
+            onClick={() => window.dispatchEvent(new CustomEvent('open-cmdk'))}
+          >
+            Ctrl K
           </button>
         </div>
       </nav>

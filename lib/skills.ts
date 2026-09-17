@@ -8,7 +8,7 @@ export const CATEGORIES: Category[] = [
     skills: [
       { name: 'JavaScript', icon: 'JS', level: 72 },
       { name: 'TypeScript', icon: 'TS', level: 68 },
-      { name: 'Python', icon: '🐍', level: 58 },
+      { name: 'Python', icon: 'PY', level: 58 },
       { name: 'HTML', icon: '</>', level: 70 },
       { name: 'CSS', icon: '#', level: 68 },
     ],
@@ -28,10 +28,10 @@ export const CATEGORIES: Category[] = [
     title: { fr: 'Bases de données', en: 'Databases' },
     icon: '🗄',
     skills: [
-      { name: 'PostgreSQL', icon: '🐘', level: 68 },
-      { name: 'MongoDB', icon: '🍃', level: 65 },
-      { name: 'MySQL', icon: '🐬', level: 60 },
-      { name: 'Redis', icon: '🔴', level: 58 },
+      { name: 'PostgreSQL', icon: 'PG', level: 68 },
+      { name: 'MongoDB', icon: 'Mo', level: 65 },
+      { name: 'MySQL', icon: 'My', level: 60 },
+      { name: 'Redis', icon: 'Rd', level: 58 },
     ],
   },
   {
@@ -46,8 +46,8 @@ export const CATEGORIES: Category[] = [
     title: { fr: 'Conteneurs & Orchestration', en: 'Containers & Orchestration' },
     icon: '📦',
     skills: [
-      { name: 'Docker', icon: '🐳', level: 70 },
-      { name: 'Kubernetes', icon: '☸', level: 65 },
+      { name: 'Docker', icon: 'Do', level: 70 },
+      { name: 'Kubernetes', icon: 'K8s', level: 65 },
     ],
   },
   {
@@ -63,24 +63,24 @@ export const CATEGORIES: Category[] = [
     title: { fr: 'CI/CD & Automatisation', en: 'CI/CD & Automation' },
     icon: '⚙',
     skills: [
-      { name: 'Git', icon: '🔀', level: 72 },
+      { name: 'Git', icon: 'Gi', level: 72 },
       { name: 'GitHub Actions', icon: '⚙', level: 70 },
       { name: 'ArgoCD', icon: 'A', level: 62 },
       { name: 'Jenkins', icon: 'J', level: 60 },
-      { name: 'GitLab CI', icon: '🦊', level: 55 },
-      { name: 'Semaphore', icon: '🚦', level: 48 },
+      { name: 'GitLab CI', icon: 'GL', level: 55 },
+      { name: 'Semaphore', icon: 'Sm', level: 48 },
     ],
   },
   {
     title: { fr: 'Supervision', en: 'Monitoring & Observability' },
-    icon: '📊',
+    icon: 'Ob',
     skills: [
-      { name: 'Prometheus', icon: '🔥', level: 65 },
-      { name: 'Grafana', icon: '📊', level: 65 },
+      { name: 'Prometheus', icon: 'Pr', level: 65 },
+      { name: 'Grafana', icon: 'Gr', level: 65 },
       { name: 'KEDA', icon: 'K', level: 55 },
-      { name: 'Loki', icon: '📜', level: 52 },
-      { name: 'ELK Stack', icon: '🔍', level: 50 },
-      { name: 'cert-manager', icon: '🔒', level: 48 },
+      { name: 'Loki', icon: 'Lk', level: 52 },
+      { name: 'ELK Stack', icon: 'EL', level: 50 },
+      { name: 'cert-manager', icon: 'CM', level: 48 },
     ],
   },
 ];
