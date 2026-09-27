@@ -11,7 +11,7 @@ export default function ArticlesContent() {
 
   return (
     <section className="section container">
-      <div className="section-heading" style={{ marginTop: '2rem' }}>
+      <div className="section-heading" data-watermark={t.eyebrow}>
         <p className="eyebrow">{t.eyebrow}</p>
         <h2>{t.title}</h2>
         <p className="section-sub">{t.sub}</p>

@@ -64,7 +64,7 @@ export default function ArticleDetail({ article }: { article: Article }) {
           {sections.map((s, i) => (
             <div className="article-section" id={s.id} key={s.id}>
               <p className="eyebrow">
-                {String(i + 1).padStart(2, '0')} — {s.title.toUpperCase()}
+                {String(i + 1).padStart(2, '0')} / {s.title.toUpperCase()}
               </p>
               <h2>{s.title}</h2>
               {s.body.map((p) => (
@@ -95,7 +95,7 @@ export default function ArticleDetail({ article }: { article: Article }) {
           {article.pitfalls && (
             <div className="article-section" id="pitfalls">
               <p className="eyebrow">
-                {String(sections.length + 1).padStart(2, '0')} — {t.pitfallsTitle.toUpperCase()}
+                {String(sections.length + 1).padStart(2, '0')} / {t.pitfallsTitle.toUpperCase()}
               </p>
               <h2>{t.pitfallsTitle}</h2>
               <p className="article-p">{t.pitfallsSub}</p>

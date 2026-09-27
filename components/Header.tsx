@@ -7,13 +7,24 @@ import { useLanguage } from '@/lib/i18n/LanguageContext';
 import { dict } from '@/lib/i18n/dictionary';
 import { useTheme } from '@/lib/theme/ThemeContext';
 import ScrollProgress from './ScrollProgress';
+import CubeMark from './CubeMark';
+
+import { PROJECTS } from '@/lib/projects';
+import { dict as fullDict } from '@/lib/i18n/dictionary';
+import { ARTICLES } from '@/lib/articles';
+import { CATEGORIES } from '@/lib/skills';
+
+const WORK_COUNT = PROJECTS.length;
+const EXPERIENCE_COUNT = fullDict.fr.about.timeline.length;
+const SKILLS_COUNT = CATEGORIES.reduce((n, c) => n + c.skills.length, 0);
+const ARTICLES_COUNT = ARTICLES.filter((a) => a.status === 'published').length;
 
 const NAV_LINKS = [
-  { href: '/#about', label: 'About' },
-  { href: '/#work', label: 'Work' },
-  { href: '/skills', label: 'Skills' },
-  { href: '/articles', label: 'Articles' },
-  { href: '/case-studies', label: 'Case Studies' },
+  { href: '/#about', label: 'About', count: null },
+  { href: '/#work', label: 'Work', count: WORK_COUNT },
+  { href: '/#experience', label: 'Experience', count: EXPERIENCE_COUNT },
+  { href: '/skills', label: 'Skills', count: SKILLS_COUNT },
+  { href: '/articles', label: 'Articles', count: ARTICLES_COUNT },
 ];
 
 export default function Header() {
@@ -28,7 +39,7 @@ export default function Header() {
       <ScrollProgress />
       <nav className="nav container">
         <Link href="/" className="logo">
-          <span className="prompt">&gt;_</span> OJ
+          <CubeMark size={24} /> OJ
         </Link>
         <button className="nav-toggle" aria-label={t.openMenu} onClick={() => setOpen((v) => !v)}>
           <span></span>
@@ -44,6 +55,7 @@ export default function Header() {
               onClick={() => setOpen(false)}
             >
               {link.label}
+              {link.count !== null && <span className="nav-count">[{link.count}]</span>}
             </Link>
           ))}
           <Link href="/#contact" className="nav-cta" onClick={() => setOpen(false)}>

@@ -5,7 +5,7 @@ import Link from 'next/link';
 import type { Project } from '@/lib/projects';
 import { useLanguage } from '@/lib/i18n/LanguageContext';
 import { dict } from '@/lib/i18n/dictionary';
-import { getNodeIcon } from '@/lib/nodeIcons';
+import { getNodeIcon, iconSrc } from '@/lib/nodeIcons';
 import TerminalTyping from '@/components/TerminalTyping';
 
 type Tab = 'overview' | 'features' | 'architecture' | 'implementation' | 'outcome';
@@ -72,7 +72,7 @@ export default function ProjectDetail({ project }: { project: Project }) {
       <div className="proj-detail-panel" data-reveal>
         {tab === 'overview' && (
           <div>
-            <p className="eyebrow">{String(tabs.findIndex((tb) => tb.id === 'overview') + 1).padStart(2, '0')} — {t2.tabOverview.toUpperCase()}</p>
+            <p className="eyebrow">{String(tabs.findIndex((tb) => tb.id === 'overview') + 1).padStart(2, '0')} / {t2.tabOverview.toUpperCase()}</p>
             <h2>{t2.overviewHeading}</h2>
             <p className="proj-detail-panel-text">{project.description[locale]}</p>
             {project.note && <p className="proj-note" style={{ marginTop: '0.8rem' }}>{project.note[locale]}</p>}
@@ -83,7 +83,7 @@ export default function ProjectDetail({ project }: { project: Project }) {
 
         {tab === 'features' && project.features && (
           <div>
-            <p className="eyebrow">{String(tabs.findIndex((tb) => tb.id === 'features') + 1).padStart(2, '0')} — {t2.tabFeatures.toUpperCase()}</p>
+            <p className="eyebrow">{String(tabs.findIndex((tb) => tb.id === 'features') + 1).padStart(2, '0')} / {t2.tabFeatures.toUpperCase()}</p>
             <h2>{t2.featuresHeading}</h2>
             <div className="capability-grid">
               {project.features.map((f, i) => (
@@ -98,7 +98,7 @@ export default function ProjectDetail({ project }: { project: Project }) {
 
         {tab === 'architecture' && project.architectureFlow && (
           <div>
-            <p className="eyebrow">{String(tabs.findIndex((tb) => tb.id === 'architecture') + 1).padStart(2, '0')} — {t2.tabArchitecture.toUpperCase()}</p>
+            <p className="eyebrow">{String(tabs.findIndex((tb) => tb.id === 'architecture') + 1).padStart(2, '0')} / {t2.tabArchitecture.toUpperCase()}</p>
             <h2>{t2.architectureHeading}</h2>
             <p className="proj-detail-panel-text" style={{ marginBottom: '1.4rem' }}>{t2.architectureHint}</p>
             <div className="arch-flow-toolbar">
@@ -131,7 +131,7 @@ export default function ProjectDetail({ project }: { project: Project }) {
                         onClick={() => setActiveNode(i)}
                       >
                         {icon && (
-                          <img className="arch-flow-node-icon" src={`https://cdn.simpleicons.org/${icon}`} alt="" width={22} height={22} />
+                          <img className="arch-flow-node-icon" src={iconSrc(icon)} alt="" width={22} height={22} />
                         )}
                         <strong>{node.label}</strong>
                         <span>{node.sub}</span>
@@ -170,7 +170,7 @@ export default function ProjectDetail({ project }: { project: Project }) {
 
         {tab === 'implementation' && project.implementationSteps && (
           <div>
-            <p className="eyebrow">{String(tabs.findIndex((tb) => tb.id === 'implementation') + 1).padStart(2, '0')} — {t2.tabImplementation.toUpperCase()}</p>
+            <p className="eyebrow">{String(tabs.findIndex((tb) => tb.id === 'implementation') + 1).padStart(2, '0')} / {t2.tabImplementation.toUpperCase()}</p>
             <h2>{t2.implementationHeading}</h2>
             <div className="impl-steps">
               {project.implementationSteps[locale].map((step, i) => (
@@ -185,13 +185,23 @@ export default function ProjectDetail({ project }: { project: Project }) {
 
         {tab === 'outcome' && project.outcome && (
           <div>
-            <p className="eyebrow">{String(tabs.findIndex((tb) => tb.id === 'outcome') + 1).padStart(2, '0')} — {t2.tabOutcome.toUpperCase()}</p>
+            <p className="eyebrow">{String(tabs.findIndex((tb) => tb.id === 'outcome') + 1).padStart(2, '0')} / {t2.tabOutcome.toUpperCase()}</p>
             <h2>{t2.outcomeHeading}</h2>
             <ul className="outcome-list">
               {project.outcome[locale].map((item) => (
                 <li key={item}>{item}</li>
               ))}
             </ul>
+            {project.evidence && (
+              <div className="outcome-evidence">
+                {project.evidence.map((item) => (
+                  <figure className="outcome-evidence-item" key={item.src}>
+                    <img src={item.src} alt={item.caption[locale]} width={960} height={540} loading="lazy" />
+                    <figcaption>{item.caption[locale]}</figcaption>
+                  </figure>
+                ))}
+              </div>
+            )}
           </div>
         )}
       </div>

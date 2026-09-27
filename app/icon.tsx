@@ -14,14 +14,18 @@ export default function Icon() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          background: '#0d2622',
-          color: '#e8873c',
-          fontSize: 20,
-          fontWeight: 800,
-          fontFamily: 'monospace',
+          background: '#08090b',
         }}
       >
-        &gt;_
+        <div
+          style={{
+            display: 'flex',
+            width: 20,
+            height: 20,
+            borderRadius: 4,
+            background: 'linear-gradient(140deg, #6aa5ff 0%, #2f6df0 60%, #123a94 100%)',
+          }}
+        />
       </div>
     ),
     { ...size }

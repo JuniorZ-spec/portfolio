@@ -2,6 +2,7 @@
 
 import { useLanguage } from '@/lib/i18n/LanguageContext';
 import { dict } from '@/lib/i18n/dictionary';
+import CubeMark from './CubeMark';
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -9,8 +10,11 @@ export default function Footer() {
   const t = dict[locale].footer;
 
   return (
-    <footer className="footer">
+    <footer className="footer surface-light">
       <div className="container">
+        <div className="footer-mark">
+          <CubeMark size={22} />
+        </div>
         <div className="footer-social">
           <a
             href="https://github.com/JuniorZ-spec"
@@ -47,9 +51,6 @@ export default function Footer() {
           </a>
         </div>
         <div className="footer-terminal">
-          <p>
-            <span className="cmd-prompt">$</span> cat copyright.txt
-          </p>
           <p className="footer-copy">
             © {year} {t.copyright}
           </p>

@@ -12,15 +12,10 @@ export default function SkillsContent() {
 
   return (
     <section className="section container">
-      <div className="section-heading center" style={{ marginTop: '2rem' }}>
+      <div className="section-heading center" data-watermark={t.eyebrow}>
         <p className="eyebrow">{t.eyebrow}</p>
         <h2>{t.title}</h2>
         <p className="section-sub">{t.sub}</p>
-        <div className="cmd-dots" aria-hidden="true">
-          <span className="dot dot-red"></span>
-          <span className="dot dot-amber"></span>
-          <span className="dot dot-green"></span>
-        </div>
       </div>
 
       <div className="skills-grid">

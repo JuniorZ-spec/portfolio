@@ -1,11 +1,12 @@
 'use client';
 
 import Link from 'next/link';
+import type { CSSProperties } from 'react';
 import RotatingWord from '@/components/RotatingWord';
 import OrbitDiagram from '@/components/OrbitDiagram';
 import LogoMarquee from '@/components/LogoMarquee';
-import SelectedProject from '@/components/SelectedProject';
-import AboutContent from './about/AboutContent';
+import LiveClock from '@/components/LiveClock';
+import { AboutIntro, Experience, Credentials } from './about/AboutContent';
 import ProjectsContent from './projects/ProjectsContent';
 import ContactContent from './contact/ContactContent';
 import { useLanguage } from '@/lib/i18n/LanguageContext';
@@ -31,46 +32,52 @@ const HERO_LOGOS = [
 export default function HomePage() {
   const { locale } = useLanguage();
   const t = dict[locale].home;
+  const [firstName, ...restName] = t.heroHeadlineName.split(' ');
+  const lastName = restName.join(' ');
+  const letters = (word: string, offset: number) =>
+    word.split('').map((ch, i) => (
+      <span className="hero-letter" key={`${offset}-${i}`} style={{ '--i': offset + i } as CSSProperties} aria-hidden="true">
+        {ch}
+      </span>
+    ));
 
   return (
     <>
       {/* HERO */}
-      <section className="hero-v2">
+      <section className="hero-v2 surface-light">
         <div className="hero-v2-inner container">
           <div className="hero-v2-copy">
             <p className="hero-v2-eyebrow">
               <RotatingWord words={t.rotatingWords} />
             </p>
-            <h1 className="hero-v2-headline">
-              {t.heroHeadline1} <span className="accent-text">{t.heroHeadlineName}</span>
-              <br />
-              {t.heroHeadline2}
+            <h1 className="hero-name" aria-label={`${t.heroHeadline1} ${t.heroHeadlineName}`}>
+              <span className="hero-name-hello">{t.heroHeadline1}</span>
+              <span className="hero-name-outline">{letters(firstName, 0)}</span>
+              <span className="hero-name-solid">{letters(lastName, firstName.length)}</span>
             </h1>
-            <p className="hero-v2-subline">{t.heroSubline}</p>
+            <p className="hero-v2-tagline">{t.heroHeadline2}</p>
+            <p className="hero-v2-proof">{t.heroProof}</p>
             <div className="hero-v2-actions">
               <Link href="/contact" className="btn btn-primary btn-pill magnetic">
                 {t.btnStartProject}
               </Link>
-              <Link href="/projects" className="btn btn-outline btn-pill magnetic">
+              <Link href="/#work" className="btn btn-outline btn-pill magnetic">
                 {t.btnSeeWork}
               </Link>
-              <Link href="/contact" className="btn btn-subtle btn-pill magnetic">
-                {t.btnResume}
-              </Link>
             </div>
-            <div className="hero-v2-badges">
+            <div className="hero-v2-foot">
               {t.heroBadges.map((b) => (
                 <a href={b.href} target="_blank" rel="noopener" className="hero-v2-badge" key={b.text}>
                   <img className="hero-v2-badge-icon" src={b.icon} alt="" width={24} height={24} />
                   {b.text}
                 </a>
               ))}
+              <p className="hero-v2-meta">
+                <span>{dict[locale].footer.status}</span>
+                <span>{t.heroMetaLocation}</span>
+                <LiveClock />
+              </p>
             </div>
-            <p className="hero-v2-meta">
-              <span>{t.heroMetaRole}</span>
-              <span>{t.heroMetaLocation}</span>
-              <span>{t.heroMetaTag}</span>
-            </p>
           </div>
           <div className="hero-v2-visual">
             <OrbitDiagram />
@@ -78,75 +85,28 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* WORK */}
+      <div id="work">
+        <ProjectsContent showAllLink />
+      </div>
+
       {/* TECH LOGO MARQUEE */}
       <LogoMarquee logos={HERO_LOGOS} />
 
-      {/* SELECTED PROJECT */}
-      <SelectedProject slug="multi-jeux" />
-
-      {/* ABOUT (bio, philosophy, career timeline, certifications) */}
+      {/* ABOUT — white surface */}
       <div id="about">
-        <AboutContent />
+        <AboutIntro />
       </div>
 
-      {/* WORK */}
-      <div id="work">
-        <ProjectsContent />
+      {/* EXPERIENCE */}
+      <div id="experience">
+        <Experience />
       </div>
 
-      {/* HOW I WORK */}
-      <section className="section container">
-        <div className="section-heading center">
-          <p className="eyebrow">{t.howEyebrow}</p>
-          <h2>{t.howTitle}</h2>
-          <p className="section-sub">{t.howSub}</p>
-        </div>
-        <div className="how-grid">
-          {t.howSteps.map((step, i) => (
-            <div className="how-card spotlight" key={step.title} data-reveal style={{ transitionDelay: `${i * 0.08}s` }}>
-              <span className="how-step-num">{String(i + 1).padStart(2, '0')}</span>
-              <h3>{step.title}</h3>
-              <p>{step.text}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* SERVICES */}
-      <section id="services" className="section container">
-        <div className="section-heading center">
-          <p className="eyebrow">{t.servicesEyebrow}</p>
-          <h2>{t.servicesTitle}</h2>
-          <p className="section-sub">{t.servicesSub}</p>
-        </div>
-        <div className="capability-grid services-grid">
-          {t.services.map((s, i) => (
-            <div className="capability-card service-card spotlight" key={s.title} data-reveal style={{ transitionDelay: `${i * 0.08}s` }}>
-              <span className="service-num">{String(i + 1).padStart(2, '0')}</span>
-              <div>
-                <h3>{s.title}</h3>
-                <p>{s.text}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section id="faq" className="section container">
-        <div className="section-heading center">
-          <p className="eyebrow">{t.faqEyebrow}</p>
-          <h2>{t.faqTitle}</h2>
-        </div>
-        <div className="faq-list">
-          {t.faq.map((item, i) => (
-            <details className="faq-item" key={item.q} data-reveal style={{ transitionDelay: `${i * 0.06}s` }}>
-              <summary>{item.q}</summary>
-              <p>{item.a}</p>
-            </details>
-          ))}
-        </div>
-      </section>
+      {/* CERTIFICATIONS & LEARNING */}
+      <div id="credentials">
+        <Credentials />
+      </div>
 
       {/* CONTACT */}
       <div id="contact">

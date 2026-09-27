@@ -33,3 +33,13 @@ export function getNodeIcon(label: string): string | null {
   }
   return null;
 }
+
+const SKILLICONS: Record<string, string> = {
+  amazonaws: 'aws',
+  microsoftazure: 'azure',
+};
+
+export function iconSrc(slug: string): string {
+  const alt = SKILLICONS[slug];
+  return alt ? `https://skillicons.dev/icons?i=${alt}` : `https://cdn.simpleicons.org/${slug}`;
+}

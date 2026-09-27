@@ -152,7 +152,7 @@ function handleCommand(raw: string, locale: Locale): Line[] {
       ALL_SKILLS.find((s) => s.name.toLowerCase().includes(arg));
     if (skill) {
       out.push(
-        { type: 'output', text: `${skill.name} — ${skill.category}` },
+        { type: 'output', text: `${skill.name} · ${skill.category}` },
         { type: 'output', text: `${t.mastery} : ${bar(skill.level)} (${t.levelLabel(skill.level)})` }
       );
     } else {

@@ -15,7 +15,7 @@ export default function OpengraphImage() {
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          background: '#0d2622',
+          background: '#08090b',
           backgroundImage:
             'linear-gradient(rgba(232,135,60,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(232,135,60,0.08) 1px, transparent 1px)',
           backgroundSize: '48px 48px',
@@ -25,7 +25,17 @@ export default function OpengraphImage() {
         <div
           style={{
             display: 'flex',
-            color: '#e8873c',
+            width: 46,
+            height: 46,
+            borderRadius: 8,
+            background: 'linear-gradient(140deg, #6aa5ff 0%, #2f6df0 60%, #123a94 100%)',
+            marginBottom: 28,
+          }}
+        />
+        <div
+          style={{
+            display: 'flex',
+            color: '#3b82ff',
             fontSize: 28,
             marginBottom: 24,
           }}
@@ -35,7 +45,7 @@ export default function OpengraphImage() {
         <div
           style={{
             display: 'flex',
-            color: '#f3ede0',
+            color: '#f4f5f7',
             fontSize: 72,
             fontWeight: 800,
             textAlign: 'center',
@@ -47,17 +57,17 @@ export default function OpengraphImage() {
         <div
           style={{
             display: 'flex',
-            color: '#f3ede0',
+            color: '#f4f5f7',
             fontSize: 32,
             marginTop: 24,
           }}
         >
-          Ingénieur DevOps Junior | Développeur Full-Stack
+          Ingénieur DevOps & Cloud | Développeur Full-Stack
         </div>
         <div
           style={{
             display: 'flex',
-            color: '#9db3ae',
+            color: '#9aa0ab',
             fontSize: 22,
             marginTop: 40,
           }}

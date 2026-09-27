@@ -17,8 +17,8 @@ export default function ContactForm() {
     const email = emailRef.current?.value ?? '';
     const message = messageRef.current?.value ?? '';
 
-    const subject = encodeURIComponent(`Portfolio contact — ${name}`);
-    const body = encodeURIComponent(`${message}\n\n— ${name} (${email})`);
+    const subject = encodeURIComponent(`Portfolio contact · ${name}`);
+    const body = encodeURIComponent(`${message}\n\n${name} (${email})`);
     window.location.href = `mailto:zinzindohouejunior@gmail.com?subject=${subject}&body=${body}`;
   };
 
