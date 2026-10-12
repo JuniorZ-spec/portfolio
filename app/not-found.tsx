@@ -8,7 +8,7 @@ export default function NotFound() {
         Page <span className="accent-text">introuvable</span>
       </h1>
       <p className="proj-detail-desc" style={{ margin: '0 auto 2rem' }}>
-        Cette page n&apos;existe pas ou a été déplacée. Reprenez votre navigation depuis l&apos;accueil.
+        Cette page n&apos;existe pas ou a été déplacée. Reprenez votre navigation depuis l&apos;accueil du site.
       </p>
       <Link href="/" className="btn btn-primary btn-pill magnetic">
         Retour à l&apos;accueil
